@@ -204,7 +204,8 @@ export const useHandleAction = ({queryString, resourceId, resourceName, selected
             })
 
         } else if (data.redirect) {
-            window.location = data.redirect
+            const redirectUrl = typeof data.redirect === 'object' ? data.redirect.url : data.redirect
+            window.location = redirectUrl
 
         } else if (data.visit) {
             Nova.visit({url: Nova.url(data.visit.path, data.visit.options), remote: false})
